@@ -7,10 +7,15 @@
       <div class="editorWrapper">
         <div class="memoListWrapper">
           <v-list class="memoList">
-            <v-list-tile ripple v-for="(memo, index) in memos" :key="index" @click="selectMemo(index)">
+            <v-list-tile
+              ripple
+              v-for="(memo, index) in memos"
+              :key="index"
+              @click="selectMemo(index)"
+            >
               <v-list-tile-action>
-                <v-icon v-if="index == selectedIndex" color="pink">check_box</v-icon>
-                <v-icon v-else color="pink">check_box_outline_blank</v-icon>
+                <v-icon v-if="index == selectedIndex" color="purple">check_box</v-icon>
+                <v-icon v-else color="purple">check_box_outline_blank</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title v-text="displayTitle(memo.markdown)"></v-list-tile-title>
@@ -18,6 +23,12 @@
             </v-list-tile>
           </v-list>
           <v-btn color="info" class="addMemoBtn" @click="addMemo">Add Memo</v-btn>
+          <v-btn
+            color="error"
+            class="deleteMemoBtn"
+            v-if="memos.length > 1"
+            @click="deleteMemo"
+          >Delete Memo</v-btn>
         </div>
         <v-textarea
           outline
@@ -54,6 +65,12 @@ export default {
     },
     addMemo: function() {
       this.memos.push({ markdown: "Untitled Memo" });
+    },
+    deleteMemo: function() {
+      this.memos.splice(this.selectedIndex, 1);
+      if (this.selectedIndex > 0) {
+        this.selectedIndex--;
+      }
     },
     selectMemo: function(index) {
       this.selectedIndex = index;
