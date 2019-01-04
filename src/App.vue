@@ -2,8 +2,8 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Sophie</span>
-        <span class="font-weight-light"> MARKDOWN MEMO</span>
+        <span>Sophie </span>
+        <span class="font-weight-light">MARKDOWN MEMO</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/y-tsutsu/sophie" target="_blank">
@@ -13,7 +13,7 @@
 
     <v-content>
       <Home v-if="!isLogin"></Home>
-      <Editor v-if="isLogin"></Editor>
+      <Editor v-if="isLogin" :user="userData"></Editor>
     </v-content>
   </v-app>
 </template>
@@ -30,8 +30,21 @@ export default {
   },
   data() {
     return {
-      isLogin: false
+      isLogin: false,
+      userData: null
     };
+  },
+  created: function() {
+    // eslint-disable-next-line no-undef
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.isLogin = true;
+        this.userData = user;
+      } else {
+        this.isLogin = false;
+        this.userData = null;
+      }
+    });
   }
 };
 </script>
