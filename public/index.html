@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>sophie</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but sophie doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>sophie</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but sophie doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyA3m6p0p6sVOuozR8rDq4Q2ygPMYJ-rlho",
+      authDomain: "sophie-ac655.firebaseapp.com",
+      databaseURL: "https://sophie-ac655.firebaseio.com",
+      projectId: "sophie-ac655",
+      storageBucket: "sophie-ac655.appspot.com",
+      messagingSenderId: "175775206608"
+    };
+    firebase.initializeApp(config);
+  </script>
+</body>
+
 </html>
