@@ -33,7 +33,7 @@
           class="markdown"
           v-model="memos[selectedIndex].markdown"
         ></v-textarea>
-        <div class="preview" v-html="preview()"></div>
+        <div class="preview markdown-body" v-html="preview()"></div>
       </div>
     </div>
   </v-app>
