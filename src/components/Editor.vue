@@ -23,12 +23,8 @@
             </v-list-tile>
           </v-list>
           <v-btn color="info" class="addMemoBtn" @click="addMemo">Add Memo</v-btn>
-          <v-btn
-            color="error"
-            class="deleteMemoBtn"
-            v-if="memos.length > 1"
-            @click="deleteMemo"
-          >Delete Memo</v-btn>
+          <v-btn color="error" v-if="memos.length > 1" @click="deleteMemo">Delete Selected Memo</v-btn>
+          <v-btn color="success" @click="saveMemos">Save Memos</v-btn>
         </div>
         <v-textarea
           outline
@@ -45,6 +41,7 @@
 
 <script>
 import marked from "marked";
+
 export default {
   name: "Editor",
   props: ["user"],
@@ -57,6 +54,30 @@ export default {
       ],
       selectedIndex: 0
     };
+  },
+  created: function() {
+    // eslint-disable-next-line no-undef
+    firebase
+      .firestore()
+      .collection("memos")
+      .doc(this.user.uid)
+      .get()
+      .then(doc => {
+        if (doc.exists && doc.data().memos) {
+          this.memos = doc.data().memos;
+        }
+      });
+  },
+  mounted: function() {
+    document.onkeydown = e => {
+      if (e.key == "s" && (e.metaKey || e.ctrlKey)) {
+        this.saveMemos();
+        return false;
+      }
+    };
+  },
+  beforeDestroy: function() {
+    document.onkeydown = null;
   },
   methods: {
     logout: function() {
@@ -71,6 +92,14 @@ export default {
       if (this.selectedIndex > 0) {
         this.selectedIndex--;
       }
+    },
+    saveMemos: function() {
+      // eslint-disable-next-line no-undef
+      firebase
+        .firestore()
+        .collection("memos")
+        .doc(this.user.uid)
+        .set({ memos: this.memos });
     },
     selectMemo: function(index) {
       this.selectedIndex = index;
