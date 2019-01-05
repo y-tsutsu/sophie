@@ -2,7 +2,7 @@
   <v-app>
     <div id="home">
       <h1>{{ msg }}</h1>
-      <v-btn color="info" class="login-btn" @click="googleLogin">Googleアカウントでログイン</v-btn>
+      <v-btn color="info" large class="login-btn" @click="googleLogin">Log In with Google Account</v-btn>
     </div>
   </v-app>
 </template>
@@ -20,14 +20,18 @@ export default {
       /* eslint no-undef: 0 */
       firebase
         .auth()
-        .signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+        .signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  font-size: 3rem;
+}
 .login-btn {
   text-transform: initial;
+  margin-top: 30px;
 }
 </style>

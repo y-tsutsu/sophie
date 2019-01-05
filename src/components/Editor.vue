@@ -1,9 +1,6 @@
 <template>
   <v-app>
     <div id="editor">
-      <h1>エディター画面</h1>
-      <span>{{ user.displayName }}</span>
-      <v-btn color="warning" class="login-btn" @click="logout">ログアウト</v-btn>
       <div class="editorWrapper">
         <div class="memoListWrapper">
           <v-list class="memoList">
@@ -14,8 +11,8 @@
               @click="selectMemo(index)"
             >
               <v-list-tile-action>
-                <v-icon v-if="index == selectedIndex" color="purple">check_box</v-icon>
-                <v-icon v-else color="purple">check_box_outline_blank</v-icon>
+                <v-icon v-if="index == selectedIndex" color="pink">check_box</v-icon>
+                <v-icon v-else color="pink">check_box_outline_blank</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title v-text="displayTitle(memo.markdown)"></v-list-tile-title>
@@ -80,10 +77,6 @@ export default {
     document.onkeydown = null;
   },
   methods: {
-    logout: function() {
-      // eslint-disable-next-line no-undef
-      firebase.auth().signOut();
-    },
     addMemo: function() {
       this.memos.push({ markdown: "Untitled Memo" });
     },
