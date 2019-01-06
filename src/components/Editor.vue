@@ -1,37 +1,45 @@
 <template>
   <v-app>
     <div id="editor">
-      <div class="editorWrapper">
-        <div class="memoListWrapper">
-          <v-list class="memoList">
-            <v-list-tile
-              ripple
-              v-for="(memo, index) in memos"
-              :key="index"
-              @click="selectMemo(index)"
-            >
-              <v-list-tile-action>
-                <v-icon v-if="index == selectedIndex" color="pink">check_box</v-icon>
-                <v-icon v-else color="pink">check_box_outline_blank</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title v-text="displayTitle(memo.markdown)"></v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-          <v-btn color="info" class="addMemoBtn" @click="addMemo">Add Memo</v-btn>
-          <v-btn color="error" v-if="memos.length > 1" @click="deleteMemo">Delete Selected Memo</v-btn>
-          <v-btn color="success" @click="saveMemos">Save Memos</v-btn>
-        </div>
-        <v-textarea
-          outline
-          rows="40"
-          label="Markdown"
-          class="markdown"
-          v-model="memos[selectedIndex].markdown"
-        ></v-textarea>
-        <div class="preview markdown-body" v-html="preview()"></div>
-      </div>
+      <v-container fluid="true">
+        <v-layout row wrap class="editorWrapper">
+          <v-flex xs2>
+            <div class="memoListWrapper">
+              <v-list class="memoList">
+                <v-list-tile
+                  ripple
+                  v-for="(memo, index) in memos"
+                  :key="index"
+                  @click="selectMemo(index)"
+                >
+                  <v-list-tile-action>
+                    <v-icon v-if="index == selectedIndex" color="pink">check_box</v-icon>
+                    <v-icon v-else color="pink">check_box_outline_blank</v-icon>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title v-text="displayTitle(memo.markdown)"></v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+              </v-list>
+              <v-btn color="info" class="addMemoBtn" @click="addMemo">Add Memo</v-btn>
+              <v-btn color="error" v-if="memos.length > 1" @click="deleteMemo">Delete Selected Memo</v-btn>
+              <v-btn color="success" @click="saveMemos">Save Memos</v-btn>
+            </div>
+          </v-flex>
+          <v-flex xs5>
+            <v-textarea
+              outline
+              rows="40"
+              label="Markdown"
+              class="markdown"
+              v-model="memos[selectedIndex].markdown"
+            ></v-textarea>
+          </v-flex>
+          <v-flex xs5>
+            <div class="preview markdown-body" v-html="preview()"></div>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </div>
   </v-app>
 </template>
@@ -108,24 +116,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.editorWrapper {
-  display: flex;
-}
-.editorWrapper > * {
-  padding: 1rem;
-}
-.memoListWrapper {
-  width: 20%;
-}
-.memoTitle {
-  white-space: nowrap;
-  overflow: hidden;
-}
-.markdown {
-  width: 50%;
+.editorWrapper > div {
+  padding: 0 1rem;
 }
 .preview {
-  width: 50%;
   text-align: left;
 }
 </style>
