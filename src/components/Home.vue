@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <div id="home">
-      <h1>{{ msg }}</h1>
+      <h1>
+        <img alt="Sophie" src="../assets/logo.png">
+      </h1>
       <v-btn color="info" large class="login-btn" @click="googleLogin">Log In with Google Account</v-btn>
     </div>
   </v-app>
@@ -11,9 +13,7 @@
 export default {
   name: "Home",
   data() {
-    return {
-      msg: "Welcome to Sophie"
-    };
+    return {};
   },
   methods: {
     googleLogin: function() {
@@ -32,6 +32,5 @@ h1 {
 }
 .login-btn {
   text-transform: initial;
-  margin-top: 30px;
 }
 </style>
