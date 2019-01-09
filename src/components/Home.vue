@@ -11,19 +11,19 @@
 
 <script>
 export default {
-  name: "Home",
-  data() {
-    return {};
+  name: 'Home',
+  data () {
+    return {}
   },
   methods: {
-    googleLogin: function() {
+    googleLogin: function () {
       /* eslint no-undef: 0 */
       firebase
         .auth()
-        .signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+        .signInWithRedirect(new firebase.auth.GoogleAuthProvider())
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

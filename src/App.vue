@@ -30,42 +30,42 @@
 </template>
 
 <script>
-import Home from "./components/Home.vue";
-import Editor from "./components/Editor.vue";
+import Home from './components/Home.vue'
+import Editor from './components/Editor.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Home: Home,
     Editor: Editor
   },
-  data() {
+  data () {
     return {
       isLogin: false,
       userData: null,
       isLoading: true
-    };
+    }
   },
-  created: function() {
+  created: function () {
     // eslint-disable-next-line no-undef
     firebase.auth().onAuthStateChanged(user => {
-      this.isLoading = false;
+      this.isLoading = false
       if (user) {
-        this.isLogin = true;
-        this.userData = user;
+        this.isLogin = true
+        this.userData = user
       } else {
-        this.isLogin = false;
-        this.userData = null;
+        this.isLogin = false
+        this.userData = null
       }
-    });
+    })
   },
-  methods : {
-    logout: function() {
+  methods: {
+    logout: function () {
       // eslint-disable-next-line no-undef
-      firebase.auth().signOut();
+      firebase.auth().signOut()
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

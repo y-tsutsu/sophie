@@ -45,74 +45,74 @@
 </template>
 
 <script>
-import marked from "marked";
+import marked from 'marked'
 
 export default {
-  name: "Editor",
-  props: ["user"],
-  data() {
+  name: 'Editor',
+  props: ['user'],
+  data () {
     return {
       memos: [
         {
-          markdown: "Untitled Memo"
+          markdown: 'Untitled Memo'
         }
       ],
       selectedIndex: 0
-    };
+    }
   },
-  created: function() {
+  created: function () {
     // eslint-disable-next-line no-undef
     firebase
       .firestore()
-      .collection("memos")
+      .collection('memos')
       .doc(this.user.uid)
       .get()
       .then(doc => {
         if (doc.exists && doc.data().memos) {
-          this.memos = doc.data().memos;
+          this.memos = doc.data().memos
         }
-      });
+      })
   },
-  mounted: function() {
+  mounted: function () {
     document.onkeydown = e => {
-      if (e.key == "s" && (e.metaKey || e.ctrlKey)) {
-        this.saveMemos();
-        return false;
+      if (e.key === 's' && (e.metaKey || e.ctrlKey)) {
+        this.saveMemos()
+        return false
       }
-    };
+    }
   },
-  beforeDestroy: function() {
-    document.onkeydown = null;
+  beforeDestroy: function () {
+    document.onkeydown = null
   },
   methods: {
-    addMemo: function() {
-      this.memos.push({ markdown: "Untitled Memo" });
+    addMemo: function () {
+      this.memos.push({ markdown: 'Untitled Memo' })
     },
-    deleteMemo: function() {
-      this.memos.splice(this.selectedIndex, 1);
+    deleteMemo: function () {
+      this.memos.splice(this.selectedIndex, 1)
       if (this.selectedIndex > 0) {
-        this.selectedIndex--;
+        this.selectedIndex--
       }
     },
-    saveMemos: function() {
+    saveMemos: function () {
       // eslint-disable-next-line no-undef
       firebase
         .firestore()
-        .collection("memos")
+        .collection('memos')
         .doc(this.user.uid)
-        .set({ memos: this.memos });
+        .set({ memos: this.memos })
     },
-    selectMemo: function(index) {
-      this.selectedIndex = index;
+    selectMemo: function (index) {
+      this.selectedIndex = index
     },
-    preview: function() {
-      return marked(this.memos[this.selectedIndex].markdown);
+    preview: function () {
+      return marked(this.memos[this.selectedIndex].markdown)
     },
-    displayTitle: function(text) {
-      return text.split(/\n/)[0];
+    displayTitle: function (text) {
+      return text.split(/\n/)[0]
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
