@@ -2,12 +2,17 @@
   <v-content>
     <h1>利用規約</h1>
     <p>ここに利用規約の文章が入ります．</p>
-    <router-link :to="{ name: 'top' }">TOPに戻る</router-link>
   </v-content>
 </template>
 
 <script>
 export default {
-  name: 'Guideline'
+  name: 'Guideline',
+  mounted: function () {
+    this.$store.commit('enterGuidline')
+  },
+  destroyed: function () {
+    this.$store.commit('leaveGuidline')
+  }
 }
 </script>

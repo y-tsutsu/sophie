@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null
+    user: null,
+    isGuidline: false
   },
   mutations: {
     updateUser (state, value) {
@@ -13,6 +14,12 @@ export default new Vuex.Store({
     },
     resetUser (state) {
       state.user = null
+    },
+    enterGuidline (state) {
+      state.isGuidline = true
+    },
+    leaveGuidline (state) {
+      state.isGuidline = false
     }
   },
   actions: {
