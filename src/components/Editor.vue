@@ -47,7 +47,6 @@ import marked from 'marked'
 
 export default {
   name: 'Editor',
-  props: ['user'],
   data () {
     return {
       memos: [
@@ -63,7 +62,7 @@ export default {
     firebase
       .firestore()
       .collection('memos')
-      .doc(this.user.uid)
+      .doc(this.$store.state.user.uid)
       .get()
       .then(doc => {
         if (doc.exists && doc.data().memos) {
@@ -97,7 +96,7 @@ export default {
       firebase
         .firestore()
         .collection('memos')
-        .doc(this.user.uid)
+        .doc(this.$store.state.user.uid)
         .set({ memos: this.memos })
     },
     selectMemo: function (index) {

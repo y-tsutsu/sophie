@@ -20,11 +20,15 @@
 <script>
 export default {
   name: 'Toolbar',
-  props: ['isLogin'],
   methods: {
     logout: function () {
       // eslint-disable-next-line no-undef
       firebase.auth().signOut()
+    }
+  },
+  computed: {
+    isLogin () {
+      return this.$store.state.user != null
     }
   }
 }

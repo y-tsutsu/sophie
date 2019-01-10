@@ -1,6 +1,5 @@
 <template>
   <v-content>
-    <Toolbar :isLogin="isLogin"></Toolbar>
     <v-progress-circular
       v-if="isLoading"
       :size="70"
@@ -10,26 +9,23 @@
       class="loading-icon"
     ></v-progress-circular>
     <Home v-if="!isLogin && !isLoading"></Home>
-    <Editor v-if="isLogin" :user="userData"></Editor>
+    <Editor v-if="isLogin"></Editor>
   </v-content>
 </template>
 
 <script>
-import Toolbar from '../components/Toolbar'
 import Home from '../components/Home'
 import Editor from '../components/Editor'
 
 export default {
   name: 'Top',
   components: {
-    Toolbar: Toolbar,
     Home: Home,
     Editor: Editor
   },
   data () {
     return {
       isLogin: false,
-      userData: null,
       isLoading: true
     }
   },
@@ -39,10 +35,10 @@ export default {
       this.isLoading = false
       if (user) {
         this.isLogin = true
-        this.userData = user
+        this.$store.commit('updateUser', user)
       } else {
         this.isLogin = false
-        this.userData = null
+        this.$store.commit('resetUser')
       }
     })
   }
