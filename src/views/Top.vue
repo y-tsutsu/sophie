@@ -1,16 +1,18 @@
 <template>
-  <v-content>
-    <v-progress-circular
-      v-if="isLoading"
-      :size="70"
-      :width="7"
-      color="primary"
-      indeterminate
-      class="loading-icon"
-    ></v-progress-circular>
-    <Home v-if="!isLogin && !isLoading"></Home>
-    <Editor v-if="isLogin"></Editor>
-  </v-content>
+  <div id="top">
+    <v-content>
+      <v-progress-circular
+        v-if="isLoading"
+        :size="70"
+        :width="7"
+        color="primary"
+        indeterminate
+        class="loading-icon"
+      ></v-progress-circular>
+      <Home v-if="!isLogin && !isLoading"></Home>
+      <Editor v-if="isLogin"></Editor>
+    </v-content>
+  </div>
 </template>
 
 <script>

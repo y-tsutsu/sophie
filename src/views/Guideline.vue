@@ -1,8 +1,10 @@
 <template>
-  <v-content>
-    <h1>利用規約</h1>
-    <p>ここに利用規約の文章が入ります．</p>
-  </v-content>
+  <div id="guideline">
+    <v-content>
+      <h1>利用規約</h1>
+      <p>ここに利用規約の文章が入ります．</p>
+    </v-content>
+  </div>
 </template>
 
 <script>

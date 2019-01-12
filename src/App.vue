@@ -1,8 +1,10 @@
 <template>
-  <v-app>
-    <Toolbar></Toolbar>
-    <router-view></router-view>
-  </v-app>
+  <dev id="app">
+    <v-app>
+      <Toolbar></Toolbar>
+      <router-view></router-view>
+    </v-app>
+  </dev>
 </template>
 
 <script>
