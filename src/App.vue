@@ -1,10 +1,8 @@
 <template>
-  <dev id="app">
-    <v-app>
-      <Toolbar></Toolbar>
-      <router-view></router-view>
-    </v-app>
-  </dev>
+  <v-app id="app">
+    <Toolbar class="toolbar"></Toolbar>
+    <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
@@ -17,3 +15,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.toolbar {
+  margin-bottom: 20px;
+}
+</style>

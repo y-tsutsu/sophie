@@ -119,4 +119,11 @@ export default {
 .preview {
   text-align: left;
 }
+.memoList {
+  background-color: #fafafa;
+}
+.preview,
+.memoList {
+  color: #455a64;
+}
 </style>
