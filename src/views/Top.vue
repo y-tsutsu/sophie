@@ -18,6 +18,7 @@
 <script>
 import Home from '../components/Home'
 import Editor from '../components/Editor'
+import firebase from 'firebase'
 
 export default {
   name: 'Top',
@@ -32,7 +33,6 @@ export default {
     }
   },
   created: function () {
-    // eslint-disable-next-line no-undef
     firebase.auth().onAuthStateChanged(user => {
       this.isLoading = false
       if (user) {

@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   name: 'Home',
   data () {
@@ -15,7 +17,6 @@ export default {
   },
   methods: {
     googleLogin: function () {
-      /* eslint no-undef: 0 */
       firebase
         .auth()
         .signInWithRedirect(new firebase.auth.GoogleAuthProvider())

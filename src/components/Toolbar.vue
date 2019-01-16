@@ -20,11 +20,12 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   name: 'Toolbar',
   methods: {
     logout: function () {
-      // eslint-disable-next-line no-undef
       firebase.auth().signOut()
     }
   },

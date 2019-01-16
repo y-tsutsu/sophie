@@ -44,6 +44,7 @@
 
 <script>
 import marked from 'marked'
+import firebase from 'firebase'
 
 export default {
   name: 'Editor',
@@ -58,7 +59,6 @@ export default {
     }
   },
   created: function () {
-    // eslint-disable-next-line no-undef
     firebase
       .firestore()
       .collection('memos')
@@ -92,7 +92,6 @@ export default {
       }
     },
     saveMemos: function () {
-      // eslint-disable-next-line no-undef
       firebase
         .firestore()
         .collection('memos')
